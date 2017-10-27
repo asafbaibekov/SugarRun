@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#upload").submit(function (event) {
+                event.preventDefault();
+                // var name = $('input[name="name"]').val();
+                // var url =  $("#upload").attr("action");
+                
+
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <form method="post" id="upload" enctype="multipart/form-data" action="/registerBusiness">
+        <input type="file" name="pic" accept="image/*">
+        <input type="text" name="name">
+        <input type="submit">
+    </form>
+</body>
+
+</html>

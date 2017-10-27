@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <title>הרשמה לשירות</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/opensanshebrew.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body dir="rtl">
+    <section style="height: 100%; font-family: Open Sans Hebrew;">
+        <div class="left col-xs-4 img-responsive" style="background-image: url('images/fruit_background.svg'); background-size: cover; background-repeat: no-repeat; height:100%;">
+            <div class="row">
+                <h1>אתם בדרך הנכונה..</h1>
+                <hr class="seperator"></hr>
+                <h2>הרשמה לשירות</h2>
+            </div>
+        </div>
+        <div class="right col-xs-8">
+            <form method="POST" action="/registerBusiness" id="register" style="height: 100%;">
+                <div style="height: 25%;">
+                    <label class="img-responsive" for="logo_file" id="logo_box">
+                            <div>
+                                <div id="div_for_image">
+                                </div>
+                                <div class="hidden_holder">
+                                    <img id="camera-icon" src="images/camera-icon.svg" style="height: 37.5%; width: 37.5%;">
+                                    <input type="file" id="logo_file" name="pic" accept="image/*" />
+                                </div>
+                            </div>
+                        </label>
+                    <h3>בחר את הלוגו לעסק שלך</h3>
+                </div>
+                <div style="height: 50%;">
+                    <div class="container table" style="border-radius: 8px;">
+                        <div class="row" style="background-color: #CFD0D1;">
+                            <input class="col-sm-4" type="text" name="businessName" value="" placeholder="שם העסק">
+                            <input class="col-sm-4" type="text" name="phoneNumber" value="" placeholder="מספר טלפון">
+                            <select class="col-sm-4" id="phone_prefix" dir="ltr" name="prefix"></select>
+                        </div>
+                        <div class="row">
+                            <input class="col-sm-12" type="email" name="email" value="" placeholder="אי-מייל">
+                        </div>
+                        <div class="row">
+                            <input class="col-sm-11" type="password" name="password" value="" placeholder="סיסמא">
+                        </div>
+                        <div class="row">
+                            <input class="col-sm-11" type="password" name="verifyPassword" value="" placeholder="אימות סיסמא">
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 15%; justify-content: center;">
+                    <input class="form-control" type="submit" value="הירשם">
+                </div>
+                <div style="height: 10%; justify-content: center;">
+                    <label style="font-family: Open Sans Hebrew; color: #919191; font-weight: 400">SugarRun © 2017</label>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

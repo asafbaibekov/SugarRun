@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>plus_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard">
+            <g id="plus_icon">
+                <circle id="Oval-4" fill="#FFFFFF" cx="21" cy="21" r="21"></circle>
+                <rect id="Rectangle-7" fill="#9E339A" x="10" y="19.5" width="22" height="3" rx="1.5"></rect>
+                <path d="M19.5,30.4760393 L19.5,11.5239607 C19.5,10.6823004 20.1715729,10 21,10 C21.8284271,10 22.5,10.6823004 22.5,11.5239607 L22.5,30.4760393 C22.5,31.3176996 21.8284271,32 21,32 C20.1715729,32 19.5,31.3176996 19.5,30.4760393 Z" id="Rectangle-7" fill="#9E339A"></path>
+            </g>
+        </g>
+    </g>
+</svg>

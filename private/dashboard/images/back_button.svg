@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 55 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>back_button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard">
+            <g id="back_button">
+                <circle id="Oval" fill="#9E339A" cx="27.5" cy="27.5" r="27.5"></circle>
+                <path d="M39.9184443,20.4044401 L27.5014987,31.6797814 L15.0845531,20.4030795 C14.4925563,19.8656402 13.5348704,19.8656402 12.9428736,20.4030795 C12.3523755,20.9405188 12.3523755,21.8113066 12.9428736,22.348746 L26.4299096,34.5969205 C27.0204077,35.1343598 27.9795923,35.1343598 28.5700904,34.5969205 L42.0571264,22.348746 C42.6476245,21.8113066 42.6476245,20.9391582 42.0571264,20.4017189 C41.4681271,19.8670008 40.5089424,19.8670008 39.9184443,20.4044401 Z" id="Expand-More" fill="#FFFFFF" fill-rule="nonzero" transform="translate(27.500000, 27.500000) rotate(90.000000) translate(-27.500000, -27.500000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

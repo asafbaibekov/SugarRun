@@ -1,0 +1,143 @@
+/* @media screen and (max-width: 768px) {
+    label[for="prizeName"] {
+        font-size: 1.5vw;
+    }
+} */
+
+html {
+    background-color: #9E339A;
+}
+
+html,
+body {
+    min-height: 900px;
+    height: 100%;
+    width: 100%;
+    font-family: Open Sans Hebrew;
+} 
+
+*:not(input) {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+img {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#sidebar-wrapper {
+    right: 0;
+    width: 150px;
+    background: #9E339A;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
+}
+
+#wrapper {
+    padding-right: 250px;
+    transition: all 0.4s ease 0s;
+    height: 100%;
+    min-height: 900px;
+    width: 100%;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    height: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer
+}
+
+div.tab {
+    height: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+div.tab.active,
+div.tab:hover {
+    background-color: #81297E;
+}
+
+#sidebar-wrapper hr {
+    width: 65%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#sidebar-wrapper hr.hide {
+    border-top: 1px solid transparent;
+}
+
+#page-content-wrapper hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #979797;
+}
+
+input:focus, textarea:focus, button:focus {
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #57C47C !important;
+}
+
+@media screen and (max-width: 530px) {
+    h1 {
+        font-size: 5.75vw;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #wrapper {
+        padding-right: 200px;
+    }
+}
+
+.plus,
+.minus {
+    cursor: pointer;
+}
+ 
+input[type=file]#image_file {
+    cursor: pointer;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    height: 100%;
+    width: 100%; 
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    background-color: blue;
+}
+
+img#camera-icon {
+    display: inline
+} 

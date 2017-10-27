@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SugarRun Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/opensanshebrew.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body dir="rtl">
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <nav>
+                <ul class="sidebar-nav nav">
+                    <li class="sidebar-brand" style="padding: 15% 20% 0 20%;">
+                        <div style="height: 100%; width: 100%;">
+                            <div style="height: 50%; display: flex; justify-content: center;">
+                                <div style="background-color:white; position: relative; width: 85%; height: 0; padding-top: 85%; border-radius: 100%; overflow-x: hidden;">
+                                    <img id="logo" style="position: absolute; width: 100%; height: 100%; top: 0; bottom: 0; left: 0; right: 0;" src="">
+                                    <!-- <img class="placeholder" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;" src="../../images/exchange_icon.svg">  -->
+                                </div>
+                            </div>
+                            <div style="height: 50%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; justify-content: center;">
+                                    <div style="width: 100%;">
+                                        <div style="width: 100%; color: white; display: flex; justify-content: center;">
+                                            <label id="accountName" style="font-size: 14px; text-align: center; font-weight: 700">שם החשבון</label>
+                                        </div>
+                                        <div style="width: 100%; color: white; display: flex; justify-content: center;">
+                                            <label style="font-size: 8px; text-align: center; font-weight: 400">צפה בחשבון שלך</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <hr class="first" align: "center"></hr>
+                    <li>
+                        <div class="tab second active">
+                            <img src="../../images/selected/selected_cup_icon.svg">
+                        </div>
+                    </li>
+                    <hr class="second" align: "center"></hr>
+                    <li>
+                        <div class="tab third">
+                            <img src="../../images/unselected/unselected_strawberry_icon.svg">
+                        </div>
+                    </li>
+                    <hr class="third" align: "center"></hr>
+                    <li>
+                        <div class="tab forth">
+                            <img src="../../images/unselected/unselected_chart_icon.svg">
+                        </div>
+                    </li>
+                    <hr class="forth" align: "center"></hr>
+                    
+                </ul>
+            </nav>
+        </div>
+
+        <div id="page-content-wrapper" style="height: 100%; min-height: 900px; width: 100%;">
+            <div class="container-fluid" style="height: 100%;">
+                <div class="row" style="padding: 15px 0;">
+                    <h1 style="font-weight: 800; margin-bottom: 20px;">פרסים</h1>
+                </div>
+                <div class="row">
+                    <div style="background-color: #9E339A; height: 50px; width: 100%; border-radius: 0 10px 10px 0; display: flex; align-items: center; cursor: pointer;" onclick="window.location.href = '/dashboard/addprize'">
+                        <img src="../../images/plus_icon.svg" style="height: 63.5%; margin: 17px;">
+                        <label for="" style="color: white; font-weight: 100; padding-top: 5px">הוסף פרס חדש</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <h1 style="font-weight: 800; padding-top: 50px">הפרסים שהוספתי</h1>
+                    <hr style="border-top-width: 2px">
+                </div>
+                <div class="row" style="width: 100%; height: calc(100% - 312px);">
+                    <div dir="ltr" id="boxes" class="container-fluid" style="overflow-y: scroll; /* width: 100%; */ height: 95%;">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

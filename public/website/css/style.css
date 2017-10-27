@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&subset=latin-ext');
+@media only screen and (min-width: 720px) {
+    header h1 {
+        font-size: 57.6px;
+    }
+    header h5 {
+        font-size: 21.6px;
+    }
+    p.changefontparagraph {
+        font-size: 32.4px;
+    }
+    p.changefontparagraph>span {
+        font-size: 39.6px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    header h1 {
+        font-size: 8vw;
+    }
+    header h5 {
+        font-size: 3vw;
+    }
+    p.changefontparagraph {
+        font-size: 4.5vw;
+    }
+    p.changefontparagraph>span {
+        font-size: 5.5vw;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    header h1 {
+        font-size: 7.5vw;
+    }
+    header h5 {
+        font-size: 3vw;
+    }
+    p.changefontparagraph {
+        font-size: 5.5vw;
+    }
+    p.changefontparagraph>span {
+        font-size: 5.5vw;
+    }
+}
+
+body {
+    padding-top: 80px;
+}
+
+* {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+img {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.navbar {
+    border: none;
+}
+
+.navbar.navbar-fixed-top div a {
+    color: white;
+}
+
+.navbar-toggle {
+    border-color: white;
+    background-color: #9E339A;
+}
+
+.navbar-toggle.active {
+    background-color: white;
+}
+
+.navbar-toggle.active span.icon-bar {
+    background-color: #9E339A;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a.navbar-brand {
+    letter-spacing: 1px;
+    font-family: San Francisco;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.navbar-right a {
+    font-family: San Francisco;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#toDownload {
+    color: #9E339A;
+    background-color: white;
+    border-radius: 33px;
+    margin-top: 5px;
+    padding: 10px 25px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+header div.row {
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    background-color: #9E339A
+}
+
+section p {
+    color: white;
+    font-family: Open Sans;
+    font-weight: 700;
+}
+
+section h1.title {
+    font-family: Quicksand;
+    font-weight: 700;
+    font-size: 70px;
+    color: white;
+}
+
+footer div.row {
+    display: -webkit-flex;
+    justify-content: center;
+}
