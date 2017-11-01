@@ -567,37 +567,6 @@ app.post('/app', async function (request, response) {
         }
     } else if (json['method'] == "friendsScores") {
 
-    } else if (json['method'] == "insertFruit") {
-        var fruits = json.fruits;
-
-        if (fruits == null) {
-            return response.send(failure("'fruits' required"));
-        }
-
-        for (var i = 0; i < fruits.length; i++) {
-            var name = json.fruits[i].name
-            var base64 = json.fruits[i].base64
-            if (name == null) {
-                return response.send(failure(`'name' required at index: ${i}`));
-            } else if (base64 == null) {
-                return response.send(failure(`'base64' required at index: ${i}`));
-            }
-        }
-        var query = `INSERT INTO Fruits ("name", "image") VALUES `
-        for (var i = 0; i < fruits.length; i++) {
-            var name = json.fruits[i].name
-            var base64 = json.fruits[i].base64
-            query += `('${name}', '${base64}'), `
-        }
-        query = query.slice(0, -2);
-        client.query(query, [])
-            .then(result => {
-                console.log(result.rows);
-                return response.send(success(result.rows));
-            })
-            .catch(reason => {
-                return response.send(failure(reason));
-            })
     } else {
         return response.send(failure("'method' required"));
     }
