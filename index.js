@@ -208,7 +208,7 @@ app.post('/app', async function (request, response) {
                 query = `SELECT EXISTS (SELECT FROM Users where "userID" = '${userID}')`;
                 var result = await client.query(query, []);
                 if (result.rows[0]['exists'] === true) {
-                    query = `INSERT INTO Sessions ("userID", "startDate", "gameTypeID") VALUES ('${userID}', NOW(), (SELECT "gameTypeID" FROM GameTypes WHERE "typeName" = 'parkRun')) RETURNING "sessionID"`;
+                    query = `INSERT INTO Sessions ("userID", "startDate", "gameTypeID") VALUES ('${userID}', NOW(), (SELECT "gameTypeID" FROM GameTypes WHERE "typeName" = 'addressed')) RETURNING "sessionID"`;
                     var result = await client.query(query, []);
                     sessionID = result.rows[0]['sessionID'];
                     var res = await addressed.addressedGame(start, end, sessionID, client);
