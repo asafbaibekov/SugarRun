@@ -89,7 +89,7 @@ app.post('/app', async function (request, response) {
             return response.send(failure("'accessToken' required when inputing facebookID"));
         }
         try {
-            query = `SELECT addUser('${json['facebookID']}', '${json['accessToken']}')`;
+            query = (facebookID == null && accessToken == null) ? `SELECT addUser(null, null)` : `SELECT addUser('${facebookID}', '${accessToken}')`;
             var result = await client.query(query, []);
             var userID = result.rows[0]["adduser"]
             return response.send(success({

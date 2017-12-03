@@ -189,7 +189,8 @@ function recorsiveReadLine() {
                     var result = await client.query(query, []);
                     console.log("BusinessesWaitingList Table Droped");
                 } else if (answer != "") {
-                    console.log(result.rows[i]);
+                    var result = await client.query(answer, []);
+                    console.log(result.rows);
                 }
                 recorsiveReadLine();
             } catch (error) {
