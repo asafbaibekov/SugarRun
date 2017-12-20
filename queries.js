@@ -124,22 +124,22 @@ function recorsiveReadLine() {
                     console.log("addUser Function Created Or Replaced");
                 } else if (answer == "CFupdateUser") {
                     var query = `CREATE OR REPLACE FUNCTION updateUser(userID INTEGER, facebookID TEXT, accessToken Text) RETURNS INTEGER AS $$
-                                    DECLARE UserID INTEGER;
+                                    DECLARE UserIDtoReturn INTEGER;
                                     BEGIN
                                         IF (userID IS NOT NULL AND facebookID IS NOT NULL AND accessToken IS NOT NULL) THEN
                                             IF (SELECT EXISTS (SELECT FROM Users WHERE "facebookID" = facebookID)) THEN
                                                 IF ((SELECT "userID" FROM Users WHERE "facebookID" = facebookID) != userID) THEN
                                                     DELETE FROM users WHERE "userID" = userID;
+                                                    DELETE FROM markedAnnotationsForUserInSession WHERE "sessionID" IN (SELECT "sessionID" FROM sessions WHERE sessions."userID" = userID);
                                                     DELETE FROM sessions WHERE "userID" = userID;
-                                                    DELETE FROM markedAnnotationsForUserInSession WHERE "userID" = userID;
                                                     DELETE FROM prizesForUsers WHERE "userID" = userID;
                                                 END IF;
-                                                UPDATE Users SET "accessToken" = accessToken WHERE "facebookID" = facebookID RETURNING "userID" INTO UserID;
+                                                UPDATE Users SET "accessToken" = accessToken WHERE "facebookID" = facebookID RETURNING "userID" INTO UserIDtoReturn;
                                             ELSE
-                                                UPDATE Users SET "facebookID" = facebookID, "accessToken" = accessToken WHERE "userID" = userID RETURNING "userID" INTO UserID;
+                                                UPDATE Users SET "facebookID" = facebookID, "accessToken" = accessToken WHERE "userID" = userID RETURNING "userID" INTO UserIDtoReturn;
                                             END IF;
                                         END IF;
-                                        RETURN UserID;
+                                        RETURN UserIDtoReturn;
                                     END;
                                $$ LANGUAGE plpgsql;`
                     var result = await client.query(query, []);
