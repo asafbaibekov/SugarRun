@@ -20,7 +20,7 @@ const bodyParser = require('body-parser');
 const pg = require('pg');
 const pgSession = require('connect-pg-simple')(session);
 const moment = require('moment-timezone');
-const request = require('sync-request');
+const syncRequest = require('sync-request');
 // const morgan = require('morgan');
 
 app.use(bodyParser.json());
@@ -457,16 +457,30 @@ app.post('/app', async function (request, response) {
                 var steps = result.rows[0].steps;
                 var seconds = result.rows[0].seconds;
                 var distance = result.rows[0].distance;
-                // get accessToken of the user
-                // if he has one
-                // request facebook data
-                // otherwise he is a guest user
-
-                response.send(success({
+                if (steps == null) steps = 0;
+                if (seconds == null) seconds = 0;
+                if (distance == null) distance = 0;
+                var access_token = result.rows[1].accessToken;
+                var userProfile = {
                     steps: steps,
                     seconds: seconds,
                     distance: distance
-                }));
+                }
+                if (access_token != null) {
+                    var facebookJSON = JSON.parse(syncRequest('GET', `https://graph.facebook.com/v2.11/me?fields=id,first_name,last_name,picture.type(large)&access_token=${access_token}`).getBody('utf8'));
+                    if (facebookJSON.error == null) {
+                        var url = facebookJSON.picture.data.url;
+                        var profileImage = syncRequest('GET', url).getBody('base64');
+                        var facebookData = {
+                            id: facebookJSON.id,
+                            first_name: facebookJSON.first_name,
+                            last_name: facebookJSON.last_name,
+                            profile_image: profileImage
+                        }
+                        userProfile.facebook_data = facebookData;
+                    }
+                }
+                response.send(success(userProfile));
             } catch(error) {
                 response.send(failure());
             }
