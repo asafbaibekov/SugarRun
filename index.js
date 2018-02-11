@@ -471,13 +471,13 @@ app.post('/app', async function (request, response) {
                     if (facebookJSON.error == null) {
                         var url = facebookJSON.picture.data.url;
                         var profileImage = syncRequest('GET', url).getBody('base64');
-                        var facebookData = {
+                        userProfile.facebook_data = {
                             id: facebookJSON.id,
                             first_name: facebookJSON.first_name,
                             last_name: facebookJSON.last_name,
+                            profile_image_url: url,
                             profile_image: profileImage
                         }
-                        userProfile.facebook_data = facebookData;
                     }
                 }
                 response.send(success(userProfile));
