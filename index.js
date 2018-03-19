@@ -738,7 +738,7 @@ app.post('/registerBusiness', upload.single('pic'), async function (request, res
         }));
     }
 
-    var linkToConfirm = `http://${request.headers.host}/confirm/${uniqeID}`;
+    var linkToConfirm = `https://${request.headers.host}/confirm/${uniqeID}`;
     sendMail(email, 'SugarRun - email confirmation', linkToConfirm); // `click on the link to confirm your account at SugarRun\n${}`
     return response.send({
         redirect: '/businessplatform'
