@@ -77,6 +77,8 @@ app.get('/dashboard', function (req, res) {
     return res.redirect('/dashboard/prizes');
 })
 
+app.use("/fonts", express.static(__dirname + '/public/fonts.css'));
+
 app.post('/app', async function (request, response) {
     console.log(request.body);
     var json = request.body
