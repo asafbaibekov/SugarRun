@@ -18,11 +18,13 @@ $(function() {
                 password: password
             },
             success: function(response, status, r) {
+                console.log('success');
                 if (response.redirect) {
                     window.location.href = response.redirect;
                 }
             },
             error: function(xhr) {
+                var status = xhr.status;
                 if (status == 400) {
                     // unfiled details in username / pass
                     $('#error').fadeTo(100, 1, function(){ });
