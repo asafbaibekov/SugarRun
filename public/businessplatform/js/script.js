@@ -17,8 +17,24 @@ $(function() {
                 userID: userID,
                 password: password
             },
-            success: function(result, status) {
-                console.log(result);
+            success: function(response, status, r) {
+                if (response.redirect) {
+                    window.location.href = response.redirect;
+                }
+            },
+            error: function(xhr) {
+                if (status == 400) {
+                    // unfiled details in username / pass
+                    $('#error').fadeTo(100, 1, function(){ });
+                    $("#login").addClass('error');
+                }
+                else if (status == 404) {
+                    // username & pass not found
+                    $('#error').fadeTo(100, 1, function(){ });
+                    $("#login").addClass('error');
+                } else if (status == 500) {
+                    // server's error
+                }
             }
         });
     });
@@ -42,7 +58,6 @@ $(function() {
                 email: email
             },
             success: function(result, status) {
-                console.log(JSON.stringify(result));
                 if (result["status"] == "failed") {
                     var discription = result["discription"];
                     if (discription["0"] != null) {
@@ -63,18 +78,31 @@ $(function() {
                 } else {
                     $(".waitlist input").removeClass("error");
                     // Thanks for registering to our service, we'll be in contant with you soon
-                    // $(".waitlist")
+                    // $('.waitlist #fill-details').hide(); $('.waitlist #confirmed').show(); $('.waitlist #confirmed').hide(); $('.waitlist #fill-details').show();
+                    // $('.waitlist #fill-details').fadeOut(600, function(){ }); $('.waitlist #confirmed').fadeIn(600, function(){ }); $('.waitlist #confirmed').fadeOut(600, function(){ }); $('.waitlist #fill-details').fadeIn(600, function(){ });
+                    $('.waitlist #fill-details').fadeOut(300, function(){ 
+                        $('.waitlist #confirmed').fadeIn(200, function(){ });
+                    });
                 }
             }
         });
     });
     $('.waitlist input#businessName').keypress(event, function() {
-        $(this).hasClass("error") ? $(this).removeClass("error") : void 0;
+        $(this).removeClass("error")
     });
     $('.waitlist input#phoneNumber').keypress(event, function() {
-        $(this).hasClass("error") ? $(this).removeClass("error") : void 0;
+        $(this).removeClass("error")
     });
     $('.waitlist input#email').keypress(event, function() {
-        $(this).hasClass("error") ? $(this).removeClass("error") : void 0;
+        $(this).removeClass("error")
+    });
+
+    $('.login input[type=text]').keypress(event, function() {
+        $(this).parent().removeClass("error");
+        $('#error').fadeTo(100, 0, function(){ });
+    });
+    $('.login input[type=password]').keypress(event, function() {
+        $(this).parent().removeClass("error");
+        $('#error').fadeTo(100, 0, function(){ });
     });
 });

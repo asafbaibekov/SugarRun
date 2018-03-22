@@ -1,8 +1,14 @@
+:root {
+    --primary-color: #9E339A;
+    --primary-dark-color: #AE1D98;
+    --error-color: #FE3824;
+}
+
 html,
 body {
     height: 100%;
     min-height: 550px;
-    background-color: #9E339A;
+    background-color: var(--primary-color);
 }
 
 *:not(input) {
@@ -21,6 +27,11 @@ img {
     -ms-user-select: none;
 }
 
+.waitlist {
+    height: 100%;
+    background-color: #9E339A;
+}
+
 .waitlist .title {
     color: white;
     text-align: center;
@@ -34,48 +45,83 @@ img {
 }
 
 .waitlist input::-webkit-input-placeholder {
-    color: white !important;
+    color: white;
 }
 
 .waitlist input::-ms-input-placeholder {
     /* IE 10+ */
-    color: white !important;
+    color: white;
 }
 
 .waitlist input::-moz-placeholder {
     /* Firefox 19+ */
-    color: white !important;
+    color: white;
     opacity: 1;
 }
 
 .waitlist input[type=text],
 .waitlist input[type=tel],
 .waitlist input[type=email] {
-    background-color: transparent !important;
+    background-color: transparent;
     color: white;
     text-align: center;
     border-color: white;
-    border-width: 2.5px !important;
-    border-radius: 38px !important;
-    font-size: 29.7px !important;
-    padding: 25px 0px !important;
-    margin: 5% 0px !important;
+    border-width: 2.5px;
+    border-radius: 38px;
+    font-size: 29.7px;
+    padding: 25px 0px;
+    margin: 5% 0px;
+}
+
+.waitlist input[type=text].error,
+.waitlist input[type=tel].error,
+.waitlist input[type=email].error {
+    border-color: var(--error-color);
+}
+
+.waitlist input.error::-webkit-input-placeholder {
+    color: var(--error-color);
+}
+
+.waitlist input.error::-ms-input-placeholder {
+    color: var(--error-color);
+}
+
+.waitlist input.error::-moz-placeholder {
+    color: var(--error-color);
+    opacity: 1;
 }
 
 .waitlist input[type=submit] {
-    background-color: white !important;
-    color: #AE1D98;
+    background-color: white;
+    color: var(--primary-dark-color);
     text-align: center;
-    font-size: 29.7px !important;
-    border-radius: 38px !important;
+    font-size: 29.7px;
+    border-radius: 38px;
     height: 60px;
-    margin: 10px 0px !important;
+    margin: 10px 0px;
 }
 
-div.waitlist>div {
+div.waitlist #confirmed {
+    display: none
+}
+
+div.waitlist #fill-details,
+div.waitlist #confirmed,
+div.waitlist #confirmed .row {
+    height: 100%;
+}
+
+div.waitlist #fill-details > div,
+div.waitlist #confirmed > div {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.login {
+    height: 100%;
+    background-color: white
 }
 
 div.login>div {
@@ -85,115 +131,113 @@ div.login>div {
 }
 
 .login .title {
-    color: #AE1D98;
+    color: var(--primary-dark-color);
     font-family: San Francisco;
     font-size: 55px;
     font-weight: 700;
 }
 
 .login input::-webkit-input-placeholder {
-    color: #9E339A;
+    color: var(--primary-color);
 }
 
 .login input::-ms-input-placeholder {
-    color: #9E339A;
+    color: var(--primary-color);
 }
 
 .login input::-moz-placeholder {
-    color: #9E339A;
+    color: var(--primary-color);
     opacity: 1;
 }
 
-input.error {
-    border-color: #FE3824 !important;
-}
-
-input.error::-webkit-input-placeholder {
-    color: #FE3824 !important;
-}
-
-input.error::-ms-input-placeholder.error {
-    color: #FE3824 !important;
-}
-
-input.error::-moz-placeholder.error {
-    color: #FE3824 !important;
-    opacity: 1;
-}
-
-.login input[type=text] {
-    color: #9E339A !important;
-    background-color: transparent;
-    text-align: center;
-    border-color: #9E339A;
-    border-width: 2.5px !important;
-    border-radius: 38px !important;
-    font-size: 24.3px !important;
-    padding: 25px 5.4px !important;
-    margin: 5% 0px !important;
-}
-
+.login input[type=text],
 .login input[type=password] {
-    color: #9E339A !important;
+    color: var(--primary-color);
     background-color: transparent;
     text-align: center;
-    border-color: #9E339A;
-    border-width: 2.5px !important;
-    border-radius: 38px !important;
-    font-size: 24.3px !important;
+    border-color: var(--primary-color);
+    border-width: 2.5px;
+    border-radius: 38px;
+    font-size: 24.3px;
     padding: 25px 5.4px;
-    margin: 5% 0px !important;
+    margin: 5% 0px;
+}
+
+#login.error input[type=text],
+#login.error input[type=password] {
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+#login.error input::-webkit-input-placeholder {
+    color: var(--error-color);
+}
+
+#login.error input::-ms-input-placeholder {
+    color: var(--error-color);
+}
+
+#login.error input::-moz-placeholder {
+    color: var(--error-color);
+    opacity: 1;
 }
 
 .login input[type=submit] {
-    border-color: #9E339A !important;
-    background-color: #9E339A !important;
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
-    font-size: 29.7px !important;
-    border-radius: 38px !important;
+    font-size: 29.7px;
+    border-radius: 38px;
     height: 100%;
 }
 
 .login a {
-    color: #9E339A;
+    color: var(--primary-color);
     font-weight: 300;
     font-size: 21.6px;
 }
 
-#error div {
+#error {
     color: white;
     font-size: 24.3px;
     text-align: center;
+    background-color: var(--error-color);
+    opacity: 0;
+    height: 13%;
+}
+
+#error span {
+    display: block;
 }
 
 @media screen and (max-width: 1080px) {
     .waitlist .title {
-        font-size: 3.8349vw !important;
+        font-size: 3.8349vw;
     }
     .waitlist .subtitle {
-        font-size: 2.75vw !important;
+        font-size: 2.75vw;
     }
     .waitlist input[type=text],
     .waitlist input[type=tel],
     .waitlist input[type=email] {
-        font-size: 2.75vw !important;
+        font-size: 2.75vw;
     }
     .waitlist input[type=submit] {
-        font-size: 2.75vw !important;
+        font-size: 2.75vw;
     }
     .login .title {
         font-size: 5vw;
     }
     .login input[type=text],
     .login input[type=password] {
-        font-size: 2.25vw !important;
+        font-size: 2.25vw;
     }
     .login input[type=submit] {
-        font-size: 2.75vw !important;
+        font-size: 2.75vw;
     }
     .login a {
-        font-size: 2vw !important;
+        font-size: 2vw;
     }
     #error div {
         color: white;

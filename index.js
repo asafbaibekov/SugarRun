@@ -40,13 +40,6 @@ var client = new pg.Client({
     ssl: true
 })
 
-app.use('/', express.static(__dirname + '/public/website'));
-app.use('/businessplatform', express.static(__dirname + '/public/businessplatform'));
-app.use('/register', express.static(__dirname + '/public/registerBusiness'));
-app.use('/icon', express.static(__dirname + '/'));
-app.use('/mail', express.static(__dirname + '/confirmMailPage'));
-// app.use('/upload', express.static(__dirname + '/public/uploadFruit'));
-
 app.use(session({
     store: new pgSession({
         pool: client,
@@ -59,6 +52,19 @@ app.use(session({
     },
     saveUninitialized: false
 }));
+
+app.use('/', express.static(__dirname + '/public/website'));
+app.use('/businessplatform', function(request, response, next) {
+    if (request.session.userID == undefined) {
+        next();
+    } else {
+        return response.redirect('/dashboard');
+    }
+}, express.static(__dirname + '/public/businessplatform'));
+app.use('/register', express.static(__dirname + '/public/registerBusiness'));
+app.use('/icon', express.static(__dirname + '/'));
+app.use('/mail', express.static(__dirname + '/confirmMailPage'));
+// app.use('/upload', express.static(__dirname + '/public/uploadFruit'));
 
 // app.listen(port, '127.0.0.1', function () {
 //     console.log(`I'm running on port:`, port);
@@ -607,7 +613,6 @@ app.post('/insertFruit', upload.array('pic', 1), function (request, response) {
 });
 
 app.post('/waitlist', async function (request, response) {
-    console.log(request.body);
     var json = request.body;
     var out = {};
 
@@ -616,15 +621,15 @@ app.post('/waitlist', async function (request, response) {
     var email = json["email"];
     var errors = {};
     // var errors = [];
-    if (businessName == "" || businessName == null) {
+    if (businessName == null || businessName == "") {
         errors["0"] = "'businessName' is empty";
     }
-    if (phoneNumber == "" || phoneNumber == null) {
+    if (phoneNumber == null || phoneNumber == "") {
         errors["1"] = "'phoneNumber' is empty";
     } else if (!(/^\+?(972|0)(\-)?0?(([23489]{1}\d{7})|[5]{1}\d{8})$/.test(phoneNumber))) {
         errors["1"] = "'phoneNumber' is not valid";
     }
-    if (email == "" || email == null) {
+    if (email == null || email == "") {
         errors["2"] = "'email' is empty";
     } else if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))) {
         errors["2"] = "'email' is not valid";
@@ -650,11 +655,10 @@ app.post('/waitlist', async function (request, response) {
 });
 
 app.post('/login', async function (request, response) {
-    console.log(request.body);
     var json = request.body;
 
-    var userID = json["userID"];
-    var password = json["password"];
+    var userID = json.userID;
+    var password = json.password;
 
     var errors = {};
     if (userID == "" || userID == null) {
@@ -664,22 +668,24 @@ app.post('/login', async function (request, response) {
         errors["2"] = "'password' is empty";
     }
     if (!(Object.keys(errors).length === 0 && errors.constructor === Object)) { // if the json 'errors' is not empty
-        return response.send(failure(errors));
+        return response.status(400).send(failure(errors));
     }
     var sha256 = createHash('sha256');
     var hashedPassword = sha256.update(password, 'utf8').digest('hex');
     var query = `SELECT "userID" FROM Businesses WHERE "userID" = '${userID}' AND "hashedPassword" = '${hashedPassword}'`; //HASHED PASSWORD AND USER ID ARE EQUAL OTHERWISE USER NOT EXISTS
     try {
         var result = await client.query(query, []);
-        request.session.userID = result.rows[0]["userID"];
+        if (result.rows[0] != undefined) {
+            var userID = result.rows[0].userID;
+            request.session.userID = userID;
+            return response.send({redirect: '/dashboard'});
+        } else {
+            return response.status(404).send();
+        }
     } catch (error) {
         console.log(error);
         return response.status(500).send();
     }
-    return response.status(200).send({
-        userID: userID,
-        password: hashedPassword
-    });
 })
 
 app.post('/registerBusiness', upload.single('pic'), async function (request, response) {
@@ -918,5 +924,5 @@ app.use("/insertPrize", upload.single('pic'), async function (request, response)
 
 app.get('/logout', function (request, response) {
     request.session.destroy();
-    response.send("logout success!");
+    return response.redirect('/businessplatform');
 });
