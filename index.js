@@ -926,3 +926,5 @@ app.get('/logout', function (request, response) {
     request.session.destroy();
     return response.redirect('/businessplatform');
 });
+
+app.use('*', express.static(__dirname + '/public/404 page'));
