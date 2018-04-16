@@ -53,7 +53,7 @@ function recorsiveReadLine() {
                     var result = await client.query(query, []);
                     console.log("PrizesForUsers Table Droped");
                 } else if (answer == "CTFruits") {
-                    var query = `CREATE TABLE Fruits ("fruitID" serial NOT NULL, "name" TEXT NOT NULL, "image" BYTEA NOT NULL)`;
+                    var query = `CREATE TABLE Fruits ("fruitID" serial NOT NULL, "name" TEXT NOT NULL, "image" BYTEA NOT NULL, "businessID" integer NOT NULL DEFAULT 0)`;
                     var result = await client.query(query, []);
                     console.log("Fruits table created");
                 } else if (answer == "DTFruits") {
